@@ -18,8 +18,9 @@ VOLUME ["/opt/gogs-repositories/"]
 
 EXPOSE 3000
 
-ADD gogs_v0.9.13_linux_amd64.tar.gz /opt/
-#ADD app.ini /opt/gogs/custom/conf/
+ADD https://cdn.gogs.io/gogs_v0.9.13_linux_386.tar.gz /opt/
+RUN mkdir -p /opt/gogs/custom/conf
+ADD app.ini /opt/gogs/custom/conf/app.ini
 
-USER root
+USER gogs 
 CMD ["/opt/gogs/gogs", "web"]
